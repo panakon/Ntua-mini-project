@@ -1,0 +1,5 @@
+a+b+c+d .
+a*b- C/d.
+a*b*c*d .
+4*-6 + -bravo +7.
+alpha/-11 --delta + -echo*4  .
