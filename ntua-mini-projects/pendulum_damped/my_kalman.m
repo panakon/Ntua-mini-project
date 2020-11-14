@@ -12,7 +12,7 @@ Z       = 0;
 F       = zeros(2,2);
 
 P0 = 1E-2*ones(2,2);
-S0 = [pi/4 ; 0];
+S0 = [pi/6 ; 0];
 
 B = 0.8; %kg/s
 M = 0.9; %kg
@@ -62,10 +62,27 @@ while i<size(Input,1)
 end
 writetable(result,'pendulum_ekf_result.csv','WriteRowNames',true);
 figure(1)
-plot(result.time',result.theta','b')
-hold on
 plot(Input.timestamp' , Input.displacement_truth','r')
 hold on
+plot(result.time',result.theta','b')
+hold on
+title('Estimation of angle over time')
+xlabel('Time (s)')
+ylabel('angle (rad)')
+legend({'true value','estimation'},'Location','southeast')
+
+figure(2)
+plot(Input.timestamp', Input.speed_noisy','g')
+hold on
+plot(Input.timestamp' , Input.speed_truth','r')
+hold on
+plot(result.time',result.dtheta','b')
+hold on
+title('Estimation of angular velocity over time')
+xlabel('Time (s)')
+ylabel('angular velocity (rad/s)')
+legend({'sensor input','true value','estimation'},'Location','southeast')
+
  
 
 
